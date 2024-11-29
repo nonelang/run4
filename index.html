@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://jsonip.com"></script>
+    </head>
+    <body>
+        <script type="application/javascript">
+            function getIP(json) {
+              document.write("<h1>Run4 - 온라인 파쿠르 게임</h1>");
+              document.write("<h2>아래의 유저 id 와 서버 세션 id를 공유하여 친구들과 함께 Run4에 접속하세요.</h2>");
+              var serverSession = Math.random().toString(36).substring(2, 34);
+              var userid = json.ip.replace(/\./g, '');
+              document.write("<h1 style='background: linear-gradient(to right, red, purple); color: white'> 유저 id : ", userid)
+              document.write("<h1 style='background: linear-gradient(to right, red, purple); color: white'> 서버 세션 id : ", serverSession, "</h1>");
+            }
+          </script>
+          <script type="application/javascript" src="http://ipinfo.io/?format=jsonp&callback=getIP"></script>
+          </br>
+          <button>준비 되었어요! 접속하기.</button>
+    </body>
+</html>
