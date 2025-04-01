@@ -1,21 +1,74 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script type="text/javascript" src="https://jsonip.com"></script>
-    </head>
-    <body>
-        <script type="application/javascript">
-            function getIP(json) {
-              document.write("<h1>Run4 - 온라인 파쿠르 게임</h1>");
-              document.write("<h2>아래의 유저 id 와 서버 세션 id를 공유하여 친구들과 함께 Run4에 접속하세요.</h2>");
-              var serverSession = Math.random().toString(36).substring(2, 34);
-              var userid = json.ip.replace(/\./g, '');
-              document.write("<h1 style='background: linear-gradient(to right, red, purple); color: white'> 유저 id : ", userid)
-              document.write("<h1 style='background: linear-gradient(to right, red, purple); color: white'> 서버 세션 id : ", serverSession, "</h1>");
-            }
-          </script>
-          <script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
-          </br>
-          <button>준비 되었어요! 접속하기.</button>
-    </body>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Run4 - 온라인 파쿠르 게임</title>
+    <script type="application/javascript">
+        function getIP(json) {
+            var serverSession = Math.random().toString(36).substring(2, 34);
+            var userid = json.ip.replace(/\./g, '');
+            document.getElementById('userid').textContent = userid;
+            document.getElementById('serverSession').textContent = serverSession;
+            document.getElementById('gameInfo').style.display = 'block';
+        }
+    </script>
+    <script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        #gameInfo {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .info {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        button {
+            background: #808080;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #404040;
+        }
+    </style>
+</head>
+<body>
+    <h1>Run4 - 온라인 파쿠르 게임</h1>
+    <h2>아래의 유저 ID와 서버 세션 ID를 공유하여 친구들과 함께 Run4에 접속하세요.</h2>
+    <div id="gameInfo">
+        <div class="info">유저 ID: <span id="userid"></span></div>
+        <div class="info">서버 세션 ID: <span id="serverSession"></span></div>
+    </div>
+    <br>
+    <button onclick="startGame()">준비되었어요! 접속하기.</button>
+
+    <script>
+        function startGame() {
+            alert('게임에 접속합니다!');
+        }
+    </script>
+</body>
 </html>
