@@ -6,69 +6,64 @@
     <script type="application/javascript">
         function getIP(json) {
             var serverSession = Math.random().toString(36).substring(2, 34);
-            var userid = json.ip.replace(/\./g, '');
-            document.getElementById('userid').textContent = userid;
-            document.getElementById('serverSession').textContent = serverSession;
-            document.getElementById('gameInfo').style.display = 'block';
+            var userid = json.ip.replace(/\./g, '')
+
+            document.write(`
+                <style>
+                    body {
+                        font-family: 'Arial', sans-serif;
+                        background: linear-gradient(to right, #1f4037, #99f2c8);
+                        color: white;
+                        text-align: center;
+                        padding-top: 50px;
+                    }
+                    h1 {
+                        font-size: 3em;
+                        margin-bottom: 0.5em;
+                    }
+                    h2 {
+                        font-size: 1.5em;
+                        margin-bottom: 1.5em;
+                    }
+                    .info-box {
+                        background: rgba(0, 0, 0, 0.6);
+                        padding: 20px;
+                        border-radius: 10px;
+                        display: inline-block;
+                        margin-bottom: 20px;
+                    }
+                    .label {
+                        font-size: 1.2em;
+                        margin: 10px 0;
+                    }
+                    button {
+                        background: rgba(0, 0, 0, 0.6);
+                        color: white;
+                        border: none;
+                        padding: 15px 30px;
+                        font-size: 1.2em;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        transition: background 0.3s;
+                    }
+                    button:hover {
+                        background: #808080
+                    }
+                </style>
+                <h1>Run4 - 온라인 파쿠르 게임</h1>
+                <h2>아래의 유저 ID와 서버 세션 ID를 친구들과 공유하세요!</h2>
+                <div class="info-box">
+                    <div class="label">🧍 유저 ID: <strong>${userid}</strong></div>
+                    <div class="label">🌐 서버 세션 ID: <strong>${serverSession}</strong></div>
+                </div>
+                <br>
+                <input class="label" type="text"></br>
+                <button onclick="alert('관리자가 게임을 진행할때까지 기다려주세요.')">✅ 준비 되었어요! 접속하기</button>
+            `);
         }
     </script>
-    <script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            color: white;
-            text-align: center;
-            padding-top: 50px;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 0.5em;
-        }
-        h2 {
-            font-size: 1.5em;
-            margin-bottom: 1.5em;
-        }
-        #gameInfo {
-            display: none;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        .info {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-        button {
-            background: #808080;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        button:hover {
-            background: #404040;
-        }
-    </style>
 </head>
 <body>
-    <h1>Run4 - 온라인 파쿠르 게임</h1>
-    <h2>아래의 유저 ID와 서버 세션 ID를 공유하여 친구들과 함께 Run4에 접속하세요.</h2>
-    <div id="gameInfo">
-        <div class="info">유저 ID: <span id="userid"></span></div>
-        <div class="info">서버 세션 ID: <span id="serverSession"></span></div>
-    </div>
-    <br>
-    <button onclick="startGame()">준비되었어요! 접속하기.</button>
-
-    <script>
-        function startGame() {
-            alert('게임에 접속합니다!');
-        }
-    </script>
+    <script src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
 </body>
 </html>
